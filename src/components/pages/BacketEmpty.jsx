@@ -12,7 +12,7 @@ const BacketEmpty = ({active}) => {
                     и выберите понравившийся товар.
                     Мы доставим ваш заказ от 3 000 тг.
                 </p>
-                <button onClick={ active} class="btn product__btn">Вернуться в меню</button>
+                <button onClick={ active} className="btn product__btn">Вернуться в меню</button>
             </div>
         </div>
     )

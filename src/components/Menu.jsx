@@ -1,8 +1,8 @@
 import React from 'react'
 import pizzas from '../store/pizzas'
+import { observer } from "mobx-react-lite";
 
-
-const Menu = () =>{
+const Menu = observer(() =>{
     const catalog = ['все', 'грибные', 'мясные', 'сырные']
 
     const [cat, setCat] = React.useState(0)
@@ -14,12 +14,12 @@ const Menu = () =>{
     const [active, setActive] = React.useState(false)
 
     return(
-        <header class="section-header">
-                    <h2 class="secton-title section-title--accent">Меню</h2>
-                    <nav class="catalog-nav">
-                        <ul class="catalog-nav___wrapper">
+        <header className="section-header">
+                    <h2 className="secton-title section-title--accent">Меню</h2>
+                    <nav className="catalog-nav">
+                        <ul className="catalog-nav___wrapper">
                             {catalog.map((el, index) => (
-                                <li key={index} onClick={() => setPosition(index)} class={index === cat ? 'catalog-nav_button_active' : "catalog-nav_button"}>
+                                <li key={index} onClick={() => setPosition(index)} className={index === cat ? 'catalog-nav_button_active' : "catalog-nav_button"}>
                                     {el}
                                 </li>
                             ))}
@@ -27,6 +27,6 @@ const Menu = () =>{
                     </nav>
                 </header>
     )
-}
+})
 
 export default Menu;
