@@ -27,3 +27,8 @@ class Pizzas {
 }
 
 export default new Pizzas;
+
+
+
+    
+   

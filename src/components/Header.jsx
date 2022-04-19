@@ -37,7 +37,6 @@ const Header = observer(({setActive}) => {
                         </div>
                 </div>
             </div>
-
         </div >
     )
 })
