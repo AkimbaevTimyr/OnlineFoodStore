@@ -23,7 +23,7 @@ class Pizzas {
             this.pizzas.push(obj[i])
             this.localPizzas.push(obj[i])
         }
-    }
+     }
 }
 
 export default new Pizzas;
