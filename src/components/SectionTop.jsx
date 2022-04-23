@@ -1,7 +1,4 @@
 import React from "react";
-
-
-
 const SectionTop = () => {
     return (
         <section className="section-top">
@@ -16,6 +13,5 @@ const SectionTop = () => {
 
     )
 }
-
 
 export default SectionTop

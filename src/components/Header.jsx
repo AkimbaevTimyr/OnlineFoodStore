@@ -3,7 +3,7 @@ import order from '../store/order'
 import { observer } from "mobx-react-lite";
 import { Link } from 'react-router-dom';
 const Header = observer(({setActive}) => {
-    let count = order.totalCount
+    let count = order.totalCount;
     return (
         <div className="header-page">
             <div className="container header-page__container">
