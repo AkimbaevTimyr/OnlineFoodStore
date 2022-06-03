@@ -1,24 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { observer } from "mobx-react-lite";
-import order from '../store/order';
+import { Context } from '..';
 const PizzaBlock = observer(({imageUrl, price, name, id}) => {
-    const [count, setCount] = React.useState(0);
+    const {order} = useContext(Context)
     const type = [35, 30, 25]
     const [activeType, setActiveType] = React.useState(0)
     const setSize = (index) => {
         setActiveType(index)
     }
     const handleClick = (index) => {
-        setCount(count + 1)
         const obj = {
             id,
             imageUrl,
             name,
             price,
             sizes: type[activeType],
-            pizzaCount: 1
+            count: 1
         }
-        order.addOrder(obj, type[activeType])
+        order.setOrder(obj)
     }
     return (
         <div className="catalog__item">

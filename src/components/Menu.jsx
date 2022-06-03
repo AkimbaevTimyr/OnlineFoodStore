@@ -1,13 +1,20 @@
-import React from 'react'
-import pizzas from '../store/pizzas'
-import { observer } from "mobx-react-lite";
+import React, { useContext } from 'react'
+ import { observer } from "mobx-react-lite";
+import { Context } from '..';
+import { filterPizzas, getPizzas } from '../http/getPizzas';
 const Menu = observer(() => {
+    const {pizzas} = useContext(Context)
     const catalog = ['все', 'грибные', 'мясные', 'сырные']
     const [cat, setCat] = React.useState(0)
     const setPosition = (index) => {
         setCat(index)
         setActive(!active)
-        pizzas.filter(index)
+        if(index === 0){
+            getPizzas(1).then(data => pizzas.setPizzas(data))
+        }else{
+            getPizzas(1).then(data => pizzas.setPizzas(data))
+           filterPizzas(index).then(data => pizzas.setPizzas(data))
+        }
     }
     const [active, setActive] = React.useState(false)
     return (

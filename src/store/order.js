@@ -1,51 +1,58 @@
 import { makeAutoObservable } from "mobx"
-import { toJS } from 'mobx'
-class Order {
-    totalCount = 0;
-    orders = [];
-    pizzas = 0
+
+export default class OrderStore {
     constructor() {
+        this._orders = [];
         makeAutoObservable(this)
     }
-    addOrder(order) {
-        const data = toJS(this.orders).map(el => el.name).flat()
-        if (data.includes(order.name)) {
-            this.totalCount += 1
-            toJS(this.orders).map((el, index) => (
-                (el.name === order.name ? (this.orders[index].pizzaCount += 1) : '')
-            ))
-        } else {
-            this.orders.push(order)
-            this.totalCount += 1
+    get orders() {
+        return this._orders
+    }
+    setOrders(orders){
+        this._orders = orders
+    }
+    setOrder(order) {
+        const findItem = this._orders.find((el) => el.id === order.id);
+        // if(findItem){
+        //     if(findItem.sizes === order.sizes){
+        //         findItem.count++;
+        //     }else{
+        //         this._orders.push(order);
+        //     }
+        // }
+        if(findItem){
+            if(findItem.sizes === order.sizes){
+                        findItem.count++;
+                    }
+            findItem.count++;
+        }else{
+            this._orders.push(order);
         }
     }
-    deleteOrder(id, counts) {
-        this.orders = this.orders.filter((el) => el.id !== id)
-        this.totalCount = this.totalCount - counts;
+    setPlus(name){
+        const findItem = this._orders.find((el) => el.name === name);
+        findItem.count++;
     }
-    cancel() {
-        this.orders = [];
-        this.totalCount = 0;
+    setMinus(name){
+        const findItem = this._orders.find((el) => el.name === name);
+        findItem.count--;
     }
-    minus = (name) => {
-        this.totalCount -= 1;
-        toJS(this.orders).map((el, index) => (
-            el.name === name ? (this.orders[index].pizzaCount -= 1) : ''
-        ))
+    setModalOrder(text){
+        if(text === 'cancel'){
+            alert('Заказ отменен')
+            this._orders = []
+        }else{
+            alert('Заказ принят')
+            this._orders = []
+        }
     }
-    plus = (name) => {
-        this.totalCount += 1
-        toJS(this.orders).map((el, index) => (
-            el.name === name ? (this.orders[index].pizzaCount += 1) : ''
-        ))
+    removeItem(id){
+        this._orders = this._orders.filter(item => item.id != id)
     }
-
+    setFilter(category){
+        this._orders = this._orders.filter((el) => el.category === category)
+    }
 }
-
-
-export default new Order;
-
-
 
 
 

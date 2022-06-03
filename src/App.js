@@ -1,12 +1,15 @@
 import './App.css';
 import Main from './components/pages/Main';
-import React from 'react';
-import pizzas from './store/pizzas';
-import data from './store/data';
+import React, { useContext } from 'react';
+import { getPizzas } from './http/getPizzas';
+import { Context } from '.';
 const  App = () =>  {
+  const {pizzas} = useContext(Context)
+  const {order} = useContext(Context)
   React.useEffect(()=>{
-    pizzas.setPizzas(data)
-  })
+    getPizzas(1).then(data => pizzas.setPizzas(data))
+  }, [])
+
   return (
     <div>
         <Main />

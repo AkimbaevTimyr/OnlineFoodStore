@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from "react-router-dom";
+import OrderStore from './store/order'
+import PizzasStore from './store/pizzas'
 import './index.css';
 import App from './App';
-import { BrowserRouter } from "react-router-dom";
-
+export const Context = createContext(null)
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Context.Provider value={{
+    order: new OrderStore(),
+    pizzas: new PizzasStore(),
+  }}>
     <BrowserRouter>
         <App />
     </BrowserRouter>
-  </React.StrictMode>,
+  </Context.Provider>,
   document.getElementById('root')
 );

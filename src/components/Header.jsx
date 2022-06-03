@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import order from '../store/order'
 import { observer } from "mobx-react-lite";
 import { Link } from 'react-router-dom';
+import { Context } from '..';
+import {toJS} from 'mobx'
 const Header = observer(({setActive}) => {
+    const {order} = useContext(Context)
     let count = order.totalCount;
+    const items = toJS(order.orders)
+    const totalCount = items.reduce((sum, item) => sum + item.count, 0)
     return (
         <div className="header-page">
             <div className="container header-page__container">
@@ -32,7 +37,7 @@ const Header = observer(({setActive}) => {
                     </nav>
                         <div onClick={()=> setActive(true)} className="header__cart">
                             <div className="header__cart--basket vl">
-                                Корзина {count === 0 ? '' : count}
+                                Корзина {totalCount === 0 ? '' : totalCount}
                             </div>
                         </div>
                 </div>

@@ -1,32 +1,22 @@
 import { makeAutoObservable } from "mobx"
-import { toJS } from "mobx";
-class Pizzas {
-    pizzas = []
-    localPizzas = []
+
+export default class PizzasStore {
     constructor() {
+        this._pizzas = []
+        this._returnPizzas = []
         makeAutoObservable(this)
     }
-    returnPizzas() {
-        return this.localPizzas
+
+    get pizzas(){
+        return this._pizzas
     }
 
-    filter(id) {
-        this.pizzas = this.returnPizzas();
-        if (id === 0) {
-            this.pizzas = this.returnPizzas();
-        } else {
-            this.pizzas = toJS(this.pizzas).filter(el => Number(el.category) === id)
-        }
-    }
-    setPizzas(obj) {
-        for (let i = 0; i <= obj.length - 1; i++) {
-            this.pizzas.push(obj[i])
-            this.localPizzas.push(obj[i])
-        }
+    setPizzas(pizzas){
+        this._pizzas = pizzas
+        this._returnPizzas = pizzas
     }
 }
 
-export default new Pizzas;
 
 
 
