@@ -7,12 +7,11 @@ export default class PizzasStore {
     }
 
     get pizzas(){
-        return this._pizzas
+        return this._pizzas;
     }
 
     setPizzas(pizzas){
-        console.log(pizzas)
-        this._pizzas = pizzas
+        this._pizzas = pizzas;
     }
 }
 
