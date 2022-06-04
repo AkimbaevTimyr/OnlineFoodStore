@@ -10,9 +10,8 @@ const Menu = observer(() => {
         setCat(index)
         setActive(!active)
         if(index === 0){
-            getPizzas(1).then(data => pizzas.setPizzas(data))
+            getPizzas().then(data => pizzas.setPizzas(data))
         }else{
-            getPizzas(1).then(data => pizzas.setPizzas(data))
            filterPizzas(index).then(data => pizzas.setPizzas(data))
         }
     }

@@ -7,7 +7,7 @@ const  App = () =>  {
   const {pizzas} = useContext(Context)
   const {order} = useContext(Context)
   React.useEffect(()=>{
-    getPizzas(1).then(data => pizzas.setPizzas(data))
+    getPizzas().then(data => pizzas.setPizzas(data))
   }, [])
 
   return (

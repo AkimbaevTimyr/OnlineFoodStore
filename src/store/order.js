@@ -13,17 +13,7 @@ export default class OrderStore {
     }
     setOrder(order) {
         const findItem = this._orders.find((el) => el.id === order.id);
-        // if(findItem){
-        //     if(findItem.sizes === order.sizes){
-        //         findItem.count++;
-        //     }else{
-        //         this._orders.push(order);
-        //     }
-        // }
         if(findItem){
-            if(findItem.sizes === order.sizes){
-                        findItem.count++;
-                    }
             findItem.count++;
         }else{
             this._orders.push(order);

@@ -3,7 +3,6 @@ import { makeAutoObservable } from "mobx"
 export default class PizzasStore {
     constructor() {
         this._pizzas = []
-        this._returnPizzas = []
         makeAutoObservable(this)
     }
 
@@ -12,8 +11,8 @@ export default class PizzasStore {
     }
 
     setPizzas(pizzas){
+        console.log(pizzas)
         this._pizzas = pizzas
-        this._returnPizzas = pizzas
     }
 }
 
