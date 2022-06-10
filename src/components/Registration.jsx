@@ -27,7 +27,7 @@ const Registration = () => {
             <p>Подарим подарок на день рождения, сохраним адрес доставки и расскажем об акциях</p>
             <input onChange={e => setEmail(e.target.value)} placeholder="email" /><br />
             <input onChange={e => setPassword(e.target.value)} placeholder="password" /><br />
-            <p>Есть аккаунт? <Link to="/login">Войдите</Link></p>
+            <p>Есть аккаунт? <Link to="/">Войдите</Link></p>
             <span className="basket__button" onClick={() => registration()}>Зарегистрироваться</span>
         </div>
     )

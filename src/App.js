@@ -20,8 +20,8 @@ const  App = () =>  {
 
   return (
     <Routes>
-      {auth.isAuth === true ? ( <Route path='/' element={<Main />} />) : ''}
-      <Route path='/login' element={<Login />} />
+      {auth.isAuth === true ? ( <Route path='/main' element={<Main />} />) : ''}
+      <Route path='/' element={<Login />} />
       <Route path='/registration' element={<Registration />} />
     </Routes>
   );
