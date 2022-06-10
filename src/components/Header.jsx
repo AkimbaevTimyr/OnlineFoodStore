@@ -1,14 +1,13 @@
 import React, { useContext } from 'react'
-import order from '../store/order'
 import { observer } from "mobx-react-lite";
 import { Link } from 'react-router-dom';
 import { Context } from '..';
-import {toJS} from 'mobx'
-const Header = observer(({setActive}) => {
-    const {order} = useContext(Context)
-    let count = order.totalCount;
+import { toJS } from 'mobx'
+const Header = observer(({ setActive }) => {
+    const { order } = useContext(Context)
     const items = toJS(order.orders)
     const totalCount = items.reduce((sum, item) => sum + item.count, 0)
+    const {auth} = useContext(Context)
     return (
         <div className="header-page">
             <div className="container header-page__container">
@@ -25,21 +24,22 @@ const Header = observer(({setActive}) => {
                     <nav className="header-page__nav">
                         <ul className="header-page__ul">
                             <li className="header-page__li">
-                                <a href="#1" className="header-pahe__link">
-                                    <span className="header-page__text">пицца</span>
-                                </a>
-                            </li>
-                            <li className="header-page__li">
                                 <a href="#2" className="header-pahe__link">
                                     <span className="header-page__text">о нас</span></a>
                             </li>
+                            <Link to="/login">
+                                <li className="header-page__li">
+                                    <a className="header-pahe__link">
+                                        <span className="header-page__text">{auth.isAuth === false ? "войти" : "выйти"}</span></a>
+                                </li>
+                            </Link>
                         </ul>
                     </nav>
-                        <div onClick={()=> setActive(true)} className="header__cart">
-                            <div className="header__cart--basket vl">
-                                Корзина {totalCount === 0 ? '' : totalCount}
-                            </div>
+                    <div onClick={() => setActive(true)} className="header__cart">
+                        <div className="header__cart--basket vl">
+                            Корзина {totalCount === 0 ? '' : totalCount}
                         </div>
+                    </div>
                 </div>
             </div>
         </div >

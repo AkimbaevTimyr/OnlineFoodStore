@@ -890,3 +890,49 @@ a{
   }
 }
 
+
+
+
+
+/* ordering */
+.modal__content_home {
+  margin-top: 20px;
+}
+.modal__content input{
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.modal_content-comment{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.modal__content span{
+  background-color: #ffa650;
+  padding:  10px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: white;
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form{
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+  height: 400px;
+  border: 1px solid black;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 7%;
+}
+
+.form input{
+  margin-bottom: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}

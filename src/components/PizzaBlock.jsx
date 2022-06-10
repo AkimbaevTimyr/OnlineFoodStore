@@ -1,14 +1,19 @@
 import React, { useContext } from 'react'
 import { observer } from "mobx-react-lite";
 import { Context } from '..';
+import { collection, addDoc } from "firebase/firestore"; 
+import { db } from '../firebase-config';
+import { addOrder } from '../http/addOrders';
+
 const PizzaBlock = observer(({imageUrl, price, name, id}) => {
     const {order} = useContext(Context)
     const type = [35, 30, 25]
     const [activeType, setActiveType] = React.useState(0)
+    const { auth } = useContext(Context)
     const setSize = (index) => {
         setActiveType(index)
     }
-    const handleClick = (index) => {
+    const handleClick = async() => {
         const obj = {
             id,
             imageUrl,
@@ -18,6 +23,7 @@ const PizzaBlock = observer(({imageUrl, price, name, id}) => {
             count: 1
         }
         order.setOrder(obj)
+        await addOrder(obj)
     }
     return (
         <div className="catalog__item">

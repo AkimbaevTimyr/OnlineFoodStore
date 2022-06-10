@@ -4,7 +4,11 @@ import { observer } from "mobx-react-lite";
 import BacketEmpty from './BacketEmpty';
 import CartItem from '../CartItem';
 import { Context } from '../..';
+import Ordering from './Ordering';
+import { collection, getDocs } from "firebase/firestore"; 
+
 const Modal = observer(({ activeModal, setActive }) => {
+    const [orderingVisible, setOrderingVisible] = useState(false)
     const {order} = useContext(Context)
     const obj = order.orders
     const items = toJS(order.orders)
@@ -15,10 +19,13 @@ const Modal = observer(({ activeModal, setActive }) => {
     }
     const ord = (text) =>{
         order.setModalOrder(text)
+        setOrderingVisible(true)
     }
+
+    
     return (
         <div className={activeModal ? 'modal active' : 'modal'} onClick={setActive}>
-            <div className="modal__content" onClick={e => e.stopPropagation()}>
+            {orderingVisible === false ? (<div className="modal__content" onClick={e => e.stopPropagation()}>
                 {totalPrice === 0 ? (<BacketEmpty active={setActive} />) : (<div className='modal__content-header'>
                 {totalCount} товара на {totalPrice} тенге
                     {obj.map((el, index) => (
@@ -36,7 +43,7 @@ const Modal = observer(({ activeModal, setActive }) => {
                     </div>
                 </div>
                 )}
-            </div>
+            </div>) : < Ordering />} 
         </div>
     )
 })

@@ -32,8 +32,8 @@ export default class OrderStore {
             alert('Заказ отменен')
             this._orders = []
         }else{
-            alert('Заказ принят')
-            this._orders = []
+            // alert('Заказ принят')
+            // this._orders = []
         }
     }
     removeItem(id){
