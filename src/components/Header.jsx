@@ -27,10 +27,10 @@ const Header = observer(({ setActive }) => {
                                 <a href="#2" className="header-pahe__link">
                                     <span className="header-page__text">о нас</span></a>
                             </li>
-                            <Link to="/login">
+                            <Link to="/">
                                 <li className="header-page__li">
                                     <a className="header-pahe__link">
-                                        <span className="header-page__text">{auth.isAuth === false ? "войти" : "выйти"}</span></a>
+                                        <span className="header-page__text">{auth.isAuth === false ? "войти" : <div onClick={()=> auth.setIsAuth(false)}>выйти</div>}</span></a>
                                 </li>
                             </Link>
                         </ul>

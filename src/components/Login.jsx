@@ -15,7 +15,7 @@ const Login = () =>{
         .then((userCredential) => {
           const user = userCredential.user;
           auth.setIsAuth(true)
-          navigate('/')
+          navigate('/main')
           auth.setUserEmail(user.email)
         })
         .catch((error) => {

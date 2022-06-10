@@ -17,10 +17,9 @@ const  App = () =>  {
     getPizzas().then(data => pizzas.setPizzas(data))
   }, [])
 
-
   return (
     <Routes>
-      {auth.isAuth === true ? ( <Route path='/main' element={<Main />} />) : ''}
+      <Route path='/main' element={<Main />} />
       <Route path='/' element={<Login />} />
       <Route path='/registration' element={<Registration />} />
     </Routes>
