@@ -31,7 +31,7 @@ const Login = () =>{
         <h1>Войти</h1>
         <p>Подарим подарок на день рождения, сохраним адрес доставки и расскажем об акциях</p>
         <input onChange={e => setEmail(e.target.value)} placeholder="email" /><br/>
-        <input onChange={e => setPassword(e.target.value)} placeholder="password" /><br />
+        <input onChange={e => setPassword(e.target.value)} type="password" placeholder="password" /><br />
         <p>Нет аккаунта ? <Link to='/registration'>Зарегистрируйтесь</Link></p>
         <span className="basket__button" onClick={()=> login()}>Войти</span>
     </div>

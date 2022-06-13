@@ -32,7 +32,7 @@ const Modal = observer(({ activeModal, setActive }) => {
                 {totalPrice === 0 ? (<BacketEmpty active={setActive} />) : (<div className='modal__content-header'>
                 {totalCount} товара на {totalPrice} тенге
                     {obj.map((el, index) => (
-                        el.pizzaCount === 0 ? '' : (<div key={index}>
+                        el.count === 0 ? '' : (<div key={index}>
                             <CartItem id={el.id} imageUrl={el.imageUrl} name={el.name} size={el.size} count={el.count} price={el.price} />
                         </div>)
                     ))}

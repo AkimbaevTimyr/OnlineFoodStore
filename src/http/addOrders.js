@@ -10,7 +10,6 @@ export const addOrder = async (userEmail, order) => {
     const findItem = data.find(el => el.name === order.name)
     try{
         if(findItem){
-            console.log('Есть такой')
             plusOrder(userEmail, order.name)
         }else{
             const docRef = await addDoc(collection(db, "orders"),order)
