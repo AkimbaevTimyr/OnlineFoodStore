@@ -12,7 +12,7 @@ const Registration = () => {
         createUserWithEmailAndPassword(authentication, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                navigate('/login')
+                navigate('/')
             })
             .catch((error) => {
                 const errorCode = error.code;

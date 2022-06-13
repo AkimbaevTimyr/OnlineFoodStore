@@ -4,7 +4,7 @@ import { Context } from '..';
 import { collection, addDoc } from "firebase/firestore"; 
 import { db } from '../firebase-config';
 import { addOrder } from '../http/addOrders';
-
+import { getOrders } from '../http/getOrders';
 const PizzaBlock = observer(({imageUrl, price, name, id}) => {
     const {order} = useContext(Context)
     const type = [35, 30, 25]
@@ -15,15 +15,15 @@ const PizzaBlock = observer(({imageUrl, price, name, id}) => {
     }
     const handleClick = async() => {
         const obj = {
-            id,
             imageUrl,
             name,
             price,
-            sizes: type[activeType],
-            count: 1
+            size: type[activeType],
+            count: 1,
+            userEmail: auth.userEmail
         }
-        order.setOrder(obj)
         await addOrder(obj)
+        await getOrders(auth.userEmail).then(data => order.setOrders(data))
     }
     return (
         <div className="catalog__item">

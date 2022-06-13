@@ -1,36 +1,39 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext} from 'react'
 import { toJS } from 'mobx'
 import { observer } from "mobx-react-lite";
 import BacketEmpty from './BacketEmpty';
 import CartItem from '../CartItem';
 import { Context } from '../..';
-import Ordering from './Ordering';
-import { collection, getDocs } from "firebase/firestore"; 
+import { cancelOrders, getOrders} from '../../http/getOrders';
+import { useEffect } from 'react';
 
 const Modal = observer(({ activeModal, setActive }) => {
-    const [orderingVisible, setOrderingVisible] = useState(false)
+    const {auth} = useContext(Context)
     const {order} = useContext(Context)
+    useEffect(()=>{
+        getOrders(auth.userEmail).then(data => order.setOrders(data))
+    },[])
     const obj = order.orders
     const items = toJS(order.orders)
     const totalPrice = items.reduce((sum, item)=> sum + (item.count * item.price), 0)
     const totalCount = items.reduce((sum, item) => sum + item.count, 0)
     const cancel = (text) =>{
         order.setModalOrder(text)
+        cancelOrders(auth.userEmail)
     }
     const ord = (text) =>{
         order.setModalOrder(text)
-        setOrderingVisible(true)
+        cancelOrders(auth.userEmail)
     }
 
-    
     return (
         <div className={activeModal ? 'modal active' : 'modal'} onClick={setActive}>
-            {orderingVisible === false ? (<div className="modal__content" onClick={e => e.stopPropagation()}>
+            <div className="modal__content" onClick={e => e.stopPropagation()}>
                 {totalPrice === 0 ? (<BacketEmpty active={setActive} />) : (<div className='modal__content-header'>
                 {totalCount} товара на {totalPrice} тенге
                     {obj.map((el, index) => (
                         el.pizzaCount === 0 ? '' : (<div key={index}>
-                            <CartItem id={el.id} imageUrl={el.imageUrl} name={el.name} sizes={el.sizes} count={el.count} price={el.price} />
+                            <CartItem id={el.id} imageUrl={el.imageUrl} name={el.name} size={el.size} count={el.count} price={el.price} />
                         </div>)
                     ))}
                     <div className='basket_footer-button'>
@@ -43,7 +46,7 @@ const Modal = observer(({ activeModal, setActive }) => {
                     </div>
                 </div>
                 )}
-            </div>) : < Ordering />} 
+            </div>
         </div>
     )
 })
@@ -52,6 +55,3 @@ export default Modal
 
 
 
- {/* <div onClick={setActive} className="img">
-                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path fillRule="evenodd" clipRule="evenodd" d="M9.61 12.199L.54 3.129A1.833 1.833 0 113.13.536l9.07 9.07L21.27.54a1.833 1.833 0 012.592 2.592l-9.068 9.068 9.07 9.07a1.833 1.833 0 01-2.59 2.592l-9.072-9.07-9.073 9.073a1.833 1.833 0 01-2.591-2.592L9.61 12.2z" fill="#fff"></path></svg>
-                    </div> */}
