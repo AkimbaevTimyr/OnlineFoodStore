@@ -22,7 +22,7 @@ const PizzaBlock = observer(({imageUrl, price, name, id}) => {
             count: 1,
             userEmail: auth.userEmail
         }
-        await addOrder(obj)
+        await addOrder(auth.userEmail, obj)
         await getOrders(auth.userEmail).then(data => order.setOrders(data))
     }
     return (

@@ -1,14 +1,22 @@
 import { observer } from 'mobx-react-lite'
 import React, { useContext } from 'react'
 import { Context } from '..'
-import { plusOrder } from '../http/getOrders'
-
+import {  plusOrder } from '../http/addOrders'
+import { deletePizza, minusOrder, } from '../http/deleteOrders'
 const CartItem =  observer(({id, imageUrl, name, size, count, price}) => {
     const {order} = useContext(Context)
     const {auth} = useContext(Context)
     const plus =  async(userEmail, name) =>{
         order.setPlus(name)
-        await plusOrder(userEmail, {count, imageUrl, name, price, size, userEmail})
+        await plusOrder(userEmail, name)
+    }
+    const minus = async(userEmail, name)=>{
+        order.setMinus(name)
+        await minusOrder(userEmail, name)
+    }
+    const deleteItem = async(userEmail, name) => {
+        order.removeItem(name)
+        await deletePizza(userEmail, name)
     }
     return (
         <div  className="cart__item">
@@ -24,7 +32,7 @@ const CartItem =  observer(({id, imageUrl, name, size, count, price}) => {
                 <p style={{ marginTop: '-15px' }}>классическое тесто, {size} см.</p>
             </div>
             <div className="cart__item-count">
-                <div onClick={() => order.setMinus(name)} className="button cart__item-count-minus">
+                <div onClick={() => minus(auth.userEmail, name)} className="button cart__item-count-minus">
                     <svg
 
                         width="10"
@@ -69,7 +77,7 @@ const CartItem =  observer(({id, imageUrl, name, size, count, price}) => {
             <div className="cart__item-price">
                 <b>{price} тнг</b>
             </div>
-            <div onClick={() => order.removeItem(id)} className="cart__item-remove">
+            <div onClick={() => deleteItem(auth.userEmail, name, id)} className="cart__item-remove">
                 <div className="button button--outline button--circle">
                     <svg
                         width="10"

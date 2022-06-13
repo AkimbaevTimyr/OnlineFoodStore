@@ -4,9 +4,9 @@ import { observer } from "mobx-react-lite";
 import BacketEmpty from './BacketEmpty';
 import CartItem from '../CartItem';
 import { Context } from '../..';
-import { cancelOrders, getOrders} from '../../http/getOrders';
+import {  getOrders} from '../../http/getOrders';
 import { useEffect } from 'react';
-
+import { cancelOrders } from '../../http/deleteOrders';
 const Modal = observer(({ activeModal, setActive }) => {
     const {auth} = useContext(Context)
     const {order} = useContext(Context)

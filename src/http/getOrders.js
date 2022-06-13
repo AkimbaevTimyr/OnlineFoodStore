@@ -1,6 +1,5 @@
-import { collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, query,  where } from "firebase/firestore";
 import { db } from "../firebase-config";
-import { addOrder } from "./addOrders";
 
 export const getOrders = async (userEmail) =>{
     const ordersRef = collection(db, "orders");
@@ -9,21 +8,11 @@ export const getOrders = async (userEmail) =>{
     return data
 }
 
-export const cancelOrders = async (userEmail) => {
-    const ordersRef = collection(db, "orders")
-    const q = query(ordersRef, where("userEmail", "==", userEmail))
-    const data = (await getDocs(q)).docs
-    await Promise.all(data.map(el => deleteDoc(doc(db, "orders", el.id))))
-}
-
-export const plusOrder = async (userEmail, order) => {
+export const removeItem = async(userEmail, name) =>{
     const ordersRef = collection(db, "orders")
     const q = query(ordersRef, where("userEmail", "==", userEmail))
     const data = (await getDocs(q)).docs.map(doc => doc.data())
-    const findItem = data.find(el => el.name === order.name)
-    if(findItem){
-        findItem.count++
-    }else{
-        addOrder(order)
-    }
+    const findItem = data.find(el => el.name === name)
+    console.log(data)
+    await deleteDoc(doc, (db, "orders", findItem.id))
 }

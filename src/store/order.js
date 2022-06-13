@@ -19,6 +19,7 @@ export default class OrderStore {
             this._orders.push(order);
         }
     }
+
     setPlus(name){
         const findItem = this._orders.find((el) => el.name === name);
         findItem.count++;
@@ -36,8 +37,8 @@ export default class OrderStore {
             this._orders = []
         }
     }
-    removeItem(id){
-        this._orders = this._orders.filter(item => item.id != id)
+    removeItem(name){
+        this._orders = this._orders.filter(item => item.name != name)
     }
     setFilter(category){
         this._orders = this._orders.filter((el) => el.category === category)
