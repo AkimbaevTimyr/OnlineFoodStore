@@ -77,64 +77,9 @@ a{
 }
 
 /* header */
-.header-page{
-  position: absolute;
-  top: 0;
-  left: 0%;
-  width: 100%;
-  z-index: 5;
-  padding: 15px 0px 10px 0px;
-}
-.header__cart{
-  background-color: #ffa650;
-  padding:  10px;
-  border-radius: 20px;
-  cursor: pointer;
-  position: absolute;
-  margin-top: -10px;
-  margin-left: 200px;
-}
-.header__cart--basket {
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  font-size: 18;
-}
-.header-page__container{
-  display: flex;
-  justify-content: space-between;
-  align-items: center  ;
-}
-.header-page__ul{
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-.header-page__li{
-  margin-right: 55px;
-}
-.header-pahe__link{
-  color:#111;
-  text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  font-size: 18;
-  position: relative;
-}
-.header-page__text{
-  position: relative;
-}
-.header-page__end{
-  display: flex;
-}
-.phone__item{
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  color: #fff;
-  text-decoration: none;
-  display: inline-block;
-}
+
+
+
 
 
 
@@ -180,6 +125,11 @@ a{
   font-weight: 900;
   margin: 0 0 30px 0;
 }
+.header-text{
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+}
 
 /* catalog */
 
@@ -189,6 +139,7 @@ a{
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
+  margin-bottom: 10px;
 }
 
 .section-title--accent{
@@ -384,6 +335,8 @@ a{
   align-items: center;
   margin-right: 15px;
   width: 10%;
+  height: 100px;
+  width: 100px;
 }
 .cart__item-img img {
   width: 80px;
@@ -395,7 +348,7 @@ a{
   justify-content: center;
   width: 40%;
   font-size: 14px;
-  margin: -15px 0px 0px 25px;
+  margin: -15px 0px px 25px;
 
 }
 
@@ -406,6 +359,7 @@ a{
   font-size: 16px;
   line-height: 27px;
   letter-spacing: 0.01em;
+  margin-bottom:10px;
 }
 .cart__item-info p {
   font-size: 12px;
@@ -584,9 +538,18 @@ a{
    position: absolute;   
    top: 35%;      
 }
+.backet__empty-img{
+  display: block;
+  margin: 0 auto;
+}
+.backet__empty-content h1{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .backet__empty-content p{
   font-size: 13px;
   font-weight: 600;
+  margin-bottom: 15px;
 }
 .backet__empty-content  button{
   font-size: 14px;
@@ -813,6 +776,7 @@ a{
   .product__content{
     font-size: 12px;
     text-align: center;
+    font-weight: bold;
   }
   .product__price{
     font-size: 12px;
