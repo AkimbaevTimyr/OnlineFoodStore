@@ -29,14 +29,6 @@ const Login = () => {
   }
 
   return (
-    //     <div className="form">
-    //     <h1>Войти</h1>
-    //     <p>Подарим подарок на день рождения, сохраним адрес доставки и расскажем об акциях</p>
-    //     <input onChange={e => setEmail(e.target.value)} placeholder="email" /><br/>
-    //     <input onChange={e => setPassword(e.target.value)} type="password" placeholder="password" /><br />
-    //     <p>Нет аккаунта ? <Link to='/registration'>Зарегистрируйтесь</Link></p>
-    //     <span className="basket__button" onClick={()=> login()}>Войти</span>
-    // </div>
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
@@ -48,7 +40,7 @@ const Login = () => {
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Войди в аккаунт</h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             или{' '}
-            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+            <a href="#" className="font-medium text-indigo-600 hover:text-amber-500" >
               <Link to="/registration">зарегистрируй новый</Link>
             </a>
           </p>
@@ -93,7 +85,7 @@ const Login = () => {
             <button
               type="button"
               onClick={(e)=> login(e)}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-amber-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                 <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
