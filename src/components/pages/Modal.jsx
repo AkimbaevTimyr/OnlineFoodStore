@@ -25,6 +25,7 @@ const Modal = observer(({ activeModal, setActive }) => {
         order.setModalOrder(text)
         cancelOrders(auth.userEmail)
     }
+    console.log(items)
 
     return (
         <div className={activeModal ? 'modal active' : 'modal'} onClick={setActive}>
