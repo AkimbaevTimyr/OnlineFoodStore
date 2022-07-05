@@ -744,10 +744,7 @@ a{
   }
 }
 
-
-
-
-@media(max-width: 400px){
+@media(max-width: 575px){
   .container{
     padding: 0 15px;
     width: 920px;
@@ -789,6 +786,7 @@ a{
     margin-right: 20px;
   }
   .product__sizes{
+    width: 300px;
   }    
   .header-page__end{
     display: flex;
