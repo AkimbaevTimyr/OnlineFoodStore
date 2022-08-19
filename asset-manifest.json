@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/OnlineFoodStore/static/css/main.d097df64.css",
+    "main.js": "/OnlineFoodStore/static/js/main.119efa48.js",
+    "static/media/top-img.png": "/OnlineFoodStore/static/media/top-img.3ac24305bdbee5d87e6d.png",
+    "index.html": "/OnlineFoodStore/index.html",
+    "main.d097df64.css.map": "/OnlineFoodStore/static/css/main.d097df64.css.map",
+    "main.119efa48.js.map": "/OnlineFoodStore/static/js/main.119efa48.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d097df64.css",
+    "static/js/main.119efa48.js"
+  ]
+}
