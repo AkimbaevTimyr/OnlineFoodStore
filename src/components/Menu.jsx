@@ -3,8 +3,8 @@ import React, { useContext } from 'react'
 import { Context } from '..';
 import { filterPizzas, getPizzas } from '../http/getPizzas';
 const Menu = observer(() => {
-    const {pizzas} = useContext(Context)
     const catalog = ['все', 'грибные', 'мясные', 'сырные']
+    const {pizzas} = useContext(Context)
     const [cat, setCat] = React.useState(0)
     const setPosition = (index) => {
         setCat(index)

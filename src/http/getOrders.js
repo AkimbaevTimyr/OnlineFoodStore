@@ -6,7 +6,6 @@ export const getOrders = async (userEmail) =>{
     const q = query(ordersRef, where("userEmail", "==", userEmail))
     const data = (await getDocs(q)).docs.map(doc => doc.data())
     return data
-    console.log(data)
 }
 
 export const removeItem = async(userEmail, name) =>{
@@ -14,6 +13,5 @@ export const removeItem = async(userEmail, name) =>{
     const q = query(ordersRef, where("userEmail", "==", userEmail))
     const data = (await getDocs(q)).docs.map(doc => doc.data())
     const findItem = data.find(el => el.name === name)
-    console.log(data)
     await deleteDoc(doc, (db, "orders", findItem.id))
 }

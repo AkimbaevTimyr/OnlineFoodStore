@@ -5,7 +5,6 @@ import Header from '../Header'
 import Modal from './Modal'
 
 
-
 const Main = () => {
     const [activeModal, setActiveModal] = React.useState(false)
     return (

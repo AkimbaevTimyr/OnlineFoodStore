@@ -1,15 +1,12 @@
 import React, { useContext } from 'react'
 import { observer } from "mobx-react-lite";
 import { Context } from '..';
-import { collection, addDoc } from "firebase/firestore"; 
-import { db } from '../firebase-config';
 import { addOrder } from '../http/addOrders';
 import { getOrders } from '../http/getOrders';
 const PizzaBlock = observer(({imageUrl, price, name, id}) => {
-    const {order} = useContext(Context)
+    const {order, auth} = useContext(Context)
     const type = [35, 30, 25]
     const [activeType, setActiveType] = React.useState(0)
-    const { auth } = useContext(Context)
     const setSize = (index) => {
         setActiveType(index)
     }

@@ -8,13 +8,14 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { getOrders } from './http/getOrders';
 import Login from './components/Login';
 import Registration from './components/Registration';
 const  App = () =>  {
-  const {pizzas} = useContext(Context)
-  const {auth} = useContext(Context)
+  const {pizzas, auth, order} = useContext(Context)
   React.useEffect(()=>{
     getPizzas().then(data => pizzas.setPizzas(data))
+    getOrders(auth.userEmail).then(data => order.setOrders(data))
   }, [])
 
   return (

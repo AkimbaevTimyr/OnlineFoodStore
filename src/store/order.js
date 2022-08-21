@@ -1,4 +1,6 @@
 import { makeAutoObservable } from "mobx"
+import { plusOrder } from "../http/addOrders";
+import { deletePizza, minusOrder } from "../http/deleteOrders";
 
 export default class OrderStore {
     constructor() {
@@ -20,12 +22,14 @@ export default class OrderStore {
         }
     }
 
-    setPlus(name){
+    setPlus(email, name){
         const findItem = this._orders.find((el) => el.name === name);
+        plusOrder(email, name)
         findItem.count++;
     }
-    setMinus(name){
+    setMinus(email, name){
         const findItem = this._orders.find((el) => el.name === name);
+        minusOrder(email, name)
         findItem.count--;
     }
     setModalOrder(text){
@@ -37,8 +41,9 @@ export default class OrderStore {
             this._orders = []
         }
     }
-    removeItem(name){
+    removeItem(email, name){
         this._orders = this._orders.filter(item => item.name != name)
+        deletePizza(email, name)
     }
     setFilter(category){
         this._orders = this._orders.filter((el) => el.category === category)

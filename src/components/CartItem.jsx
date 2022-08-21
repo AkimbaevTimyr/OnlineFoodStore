@@ -1,22 +1,16 @@
 import { observer } from 'mobx-react-lite'
 import React, { useContext } from 'react'
 import { Context } from '..'
-import {  plusOrder } from '../http/addOrders'
-import { deletePizza, minusOrder, } from '../http/deleteOrders'
 const CartItem =  observer(({id, imageUrl, name, size, count, price}) => {
-    const {order} = useContext(Context)
-    const {auth} = useContext(Context)
+    const {order, auth} = useContext(Context)
     const plus =  async(userEmail, name) =>{
-        order.setPlus(name)
-        await plusOrder(userEmail, name)
+        order.setPlus(userEmail, name)
     }
     const minus = async(userEmail, name)=>{
-        order.setMinus(name)
-        await minusOrder(userEmail, name)
+        order.setMinus(userEmail, name)
     }
     const deleteItem = async(userEmail, name) => {
-        order.removeItem(name)
-        await deletePizza(userEmail, name)
+        order.removeItem(userEmail, name)
     }
     return (
         <div  className="cart__item">

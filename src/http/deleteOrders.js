@@ -8,11 +8,6 @@ export const minusOrder = async (userEmail, name) => {
     const data =(await getDocs(d)).docs
     const countRef = doc(db, 'orders', data[0].id)
     const pizzaCount = data.map(doc => doc.data())
-    // pizzaCount.forEach(el =>{
-    //     if(el.length === 0){
-            
-    //     }
-    // })
     await updateDoc(countRef,{
         count: increment(-1)
     })
