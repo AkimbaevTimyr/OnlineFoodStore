@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/OnlineFoodStore/static/css/main.43564a63.css",
-    "main.js": "/OnlineFoodStore/static/js/main.c2446c8d.js",
+    "main.js": "/OnlineFoodStore/static/js/main.1ddb0874.js",
     "static/media/top-img.png": "/OnlineFoodStore/static/media/top-img.3ac24305bdbee5d87e6d.png",
     "index.html": "/OnlineFoodStore/index.html",
     "main.43564a63.css.map": "/OnlineFoodStore/static/css/main.43564a63.css.map",
-    "main.c2446c8d.js.map": "/OnlineFoodStore/static/js/main.c2446c8d.js.map"
+    "main.1ddb0874.js.map": "/OnlineFoodStore/static/js/main.1ddb0874.js.map"
   },
   "entrypoints": [
     "static/css/main.43564a63.css",
-    "static/js/main.c2446c8d.js"
+    "static/js/main.1ddb0874.js"
   ]
 }
