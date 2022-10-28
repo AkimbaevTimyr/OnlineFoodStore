@@ -25,5 +25,6 @@ Stack:\
 8)Axios\
 9)React Testing Library
 
-
-![Иллюстрация к проекту](https://github.com/AkimbaevTimyr/OnlineFoodStore/raw/main/src/img/main.png)
+Иллюстрация к проекту
+(https://github.com/AkimbaevTimyr/OnlineFoodStore/raw/main/src/img/main.png)
+(https://github.com/AkimbaevTimyr/OnlineFoodStore/raw/main/src/img/bsk.png)
