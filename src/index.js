@@ -14,7 +14,7 @@ ReactDOM.render(
     pizzas: new PizzasStore(),
     auth: new AuthStore()
   }}>
-    <BrowserRouter>
+    <BrowserRouter basename='OnlineFoodStore'>
         <App />
     </BrowserRouter>
   </Context.Provider>,
