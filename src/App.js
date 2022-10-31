@@ -20,6 +20,7 @@ const  App = () =>  {
 
   return (
     <Routes>
+      <Route path='*' element={<div>Page Not Found</div>}/>
       <Route path='/main' element={<Main />} />
       <Route path='/' element={<Login />} />
       <Route path='/registration' element={<Registration />} />
